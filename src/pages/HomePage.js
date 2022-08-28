@@ -8,7 +8,7 @@ const HomePage = () => {
             <SubHeader current='Home' />
             <DisplayList />
         </Container>
-    )
+    );
 };
 
 export default HomePage;
