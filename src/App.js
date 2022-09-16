@@ -14,9 +14,9 @@ import './App.css';
 function App() {
 const dispatch = useDispatch();
 
-  useEffect{() => {
+  useEffect(() => {
     dispatch(fetchCampsites());
-  }, [dispatch]};
+  }, [dispatch]);
 
   return (
     <div className="App">
