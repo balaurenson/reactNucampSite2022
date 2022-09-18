@@ -25,7 +25,7 @@ const CampsiteDetailPage = () => {
         content = (
             <>
                 <CampsiteDetail campsite={campsite} />
-                <CommentsList campsiteById={campsiteId} />
+                <CommentsList campsiteId={campsiteId} />
             </>
         )
     }
