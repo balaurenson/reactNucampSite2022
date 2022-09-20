@@ -10,7 +10,7 @@ import {
   Label,
 } from "reactstrap";
 import { validateCommentForm } from "../../utils/validateCommentForm";
-import { addComment } from './commentsSlice';
+import { postComment } from "./commentsSlice";
 
 const CommentForm = ({ campsiteId }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,10 +23,10 @@ const CommentForm = ({ campsiteId }) => {
       rating: values.rating,
       author: values.author,
       text: values.commentText,
-      date: new Date(Date.now()).toISOString()
+      date: new Date(Date.now()).toISOString(),
     };
-    console.log('comment:', comment);
-    dispatch(addComment)
+    console.log("comment:", comment);
+    dispatch(postComment(comment));
     setModalOpen(false);
   };
 
@@ -44,7 +44,7 @@ const CommentForm = ({ campsiteId }) => {
             initialValues={{
               rating: "undefined",
               author: "",
-              commentText:"",
+              commentText: "",
             }}
             onSubmit={handleSubmit}
             validate={validateCommentForm}
@@ -61,7 +61,9 @@ const CommentForm = ({ campsiteId }) => {
                   <option>4</option>
                   <option>5</option>
                 </Field>
-                <ErrorMessage name='rating'>{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+                <ErrorMessage name="rating">
+                  {(msg) => <p className="text-danger">{msg}</p>}
+                </ErrorMessage>
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="author">Your Name</Label>
@@ -70,7 +72,9 @@ const CommentForm = ({ campsiteId }) => {
                   placeholder="Your Name"
                   className="form-control"
                 />
-                <ErrorMessage name='author'>{(msg) => <p className="text-danger">{msg}</p>}</ErrorMessage>
+                <ErrorMessage name="author">
+                  {(msg) => <p className="text-danger">{msg}</p>}
+                </ErrorMessage>
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="commentText">Comment</Label>
